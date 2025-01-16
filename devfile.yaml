@@ -26,5 +26,5 @@ commands:
   - id: python-setup
     exec:
       component: aws-runtime
-      commandLine: "echo 'alias python="python3.12"' >> ~/.bashrc"
+      commandLine: echo 'alias python="python3.12"' >> ~/.bashrc
       workingDir: $PROJECT_SOURCE
