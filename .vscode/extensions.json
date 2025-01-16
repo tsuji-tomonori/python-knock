@@ -1,0 +1,24 @@
+{
+    "recommendations": [
+        // JP
+        "MS-CEINTL.vscode-language-pack-ja",
+        // Python
+        "ms-python.python",
+        "charliermarsh.ruff",
+        // Git
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "vivaxy.vscode-conventional-commits",
+        // UI/UX
+        "oderwat.indent-rainbow",
+        "shardulm94.trailing-spaces",
+        "medo64.render-crlf",
+        "PKief.material-icon-theme",
+        "usernamehw.errorlens",
+        // Other
+        "alefragnani.Bookmarks",
+        "Gruntfuggly.todo-tree",
+        "mutantdino.resourcemonitor",
+    ]
+}
