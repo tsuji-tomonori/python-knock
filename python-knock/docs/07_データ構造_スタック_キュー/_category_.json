@@ -1,0 +1,8 @@
+{
+  "label": "データ構造 スタック/キュー",
+  "position": 207,
+  "link": {
+    "type": "generated-index",
+    "description": "スタックやキューなどの特性を理解し、その実装方法を学ぶ"
+  }
+}

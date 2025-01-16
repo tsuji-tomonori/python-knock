@@ -1,0 +1,8 @@
+{
+  "label": "データ構造 集合",
+  "position": 206,
+  "link": {
+    "type": "generated-index",
+    "description": "集合（セット）の特性を理解し、重複を排除するデータ管理や集合演算を学ぶ"
+  }
+}

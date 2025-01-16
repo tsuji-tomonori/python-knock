@@ -1,0 +1,8 @@
+{
+  "label": "日付",
+  "position": 209,
+  "link": {
+    "type": "generated-index",
+    "description": "日付の特性を理解し、Pythonのdatetimeモジュールを使った操作や計算方法を学ぶ"
+  }
+}

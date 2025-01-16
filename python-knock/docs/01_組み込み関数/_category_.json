@@ -1,0 +1,8 @@
+{
+  "label": "組み込み関数",
+  "position": 201,
+  "link": {
+    "type": "generated-index",
+    "description": "Pythonの標準ライブラリに含まれる組み込み関数の使い方を学ぶ"
+  }
+}

@@ -1,0 +1,34 @@
+.features {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.featureCard {
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+}
+
+.featureCard h3 {
+  color: #007bff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureCard p {
+  color: #333;
+  font-size: 1rem;
+}
+
+/* スマホ向けのレスポンシブデザイン */
+@media (max-width: 768px) {
+  .featureCard {
+    padding: 1rem;
+  }
+}
