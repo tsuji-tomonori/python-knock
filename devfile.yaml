@@ -19,3 +19,12 @@ components:
   - name: docker-store
     volume:
       size: 16Gi
+events:
+  postStart:
+    - python-setup
+commands:
+  - id: python-setup
+    exec:
+      component: aws-runtime
+      commandLine: "echo 'alias python="python3.12"' >> ~/.bashrc"
+      workingDir: $PROJECT_SOURCE
