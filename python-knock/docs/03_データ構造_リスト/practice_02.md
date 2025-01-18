@@ -1,6 +1,6 @@
-# 問題(03B): K-means クラスタリングの実装
+# 問題(03B): クラスタリングの実装
 
-## 問題
+## 問題文
 
 データのクラスタリングは、機械学習やデータ分析において重要な手法の一つです。特に、**K-means クラスタリング**は広く使われる手法です。
 
@@ -13,9 +13,7 @@ K-means クラスタリングは以下の手順で動作します。
 
 あなたのタスクは、2次元平面上のデータを対象にしたK-meansクラスタリングを実装することです。
 
-## 入力フォーマット
-
-以下の `k_means_clustering` 関数を実装してください。
+## 入力
 
 ```python
 from typing import List, Tuple
@@ -35,7 +33,7 @@ def k_means_clustering(points: List[Tuple[float, float]], k: int, max_iter: int 
     ...
 ```
 
-## 入力値の条件
+### 入力値の条件
 
 - `points`:
   - `points[i]` は `(x, y)` の形式で、`x, y` は実数 (`float`)。
@@ -45,21 +43,12 @@ def k_means_clustering(points: List[Tuple[float, float]], k: int, max_iter: int 
 - `max_iter`:
   - `1 <= max_iter <= 1000`
 
-## 出力フォーマット
+## 出力
 
 - **List[int]**:
   - 各データ点が属するクラスタのインデックス（`0` 以上 `k-1` の整数）をリストで返します。
 
-## アルゴリズムの詳細
-
-1. `k` 個のクラスタの重心をランダムに選択する。
-2. 各データ点を最も近い重心に割り当てる。
-3. 各クラスタの新しい重心を計算する。
-4. クラスタの割り当てが変わらなくなるか、`max_iter` に達するまで繰り返す。
-
-## サンプル
-
-### サンプル1
+## サンプル1
 
 ```python
 from mymodule import k_means_clustering
@@ -72,12 +61,12 @@ def test_basic():
     assert all(0 <= cluster < k for cluster in result)
 ```
 
-### サンプル1解説
+**解説**
 
 - 2つのクラスタ (`k=2`) に分類される。
 - すべての点にクラスタのインデックス (`0` または `1`) が割り当てられていることを確認。
 
-### サンプル2
+## サンプル2
 
 ```python
 def test_single_cluster():
@@ -87,11 +76,11 @@ def test_single_cluster():
     assert result == [0, 0, 0]  # すべての点がクラスタ0に属する
 ```
 
-### サンプル2解説
+**解説**
 
 - クラスタ数 `k=1` の場合、すべての点は `0` に分類される。
 
-### サンプル3
+## サンプル3
 
 ```python
 def test_three_clusters():
@@ -101,6 +90,6 @@ def test_three_clusters():
     assert len(set(result)) == 3  # 3つのクラスタに分類される
 ```
 
-### サンプル3解説
+**解説**
 
 - 離れた3つのグループがあるため、`k=3` では3つの異なるクラスタに分類される。

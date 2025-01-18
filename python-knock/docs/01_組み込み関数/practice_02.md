@@ -1,6 +1,8 @@
 # 問題(01B): 年齢分布の集計
 
-## 問題
+> 知行合一: 知識と行為は一体であるということ。
+
+## 問題文
 
 ある企業では、社員の年齢分布を分析するために、年齢データを基に集計を行いたいと考えています。与えられた社員の年齢リストに対して、以下の集計を行う関数を実装してください。
 
@@ -8,16 +10,14 @@
 2. **平均年齢の計算**
 3. **平均年齢以下の社員の人数をカウント**
 
-## 入力フォーマット
-
-以下の `count_age_statistics` 関数を実装してください。
+## 入力
 
 ```python
-from typing import NamedTuple, List
+from typing import NamedTuple
 
 
 class Param(NamedTuple):
-    ages: List[int]  # 社員の年齢リスト (0 <= ages[i] <= 120)
+    ages: list[int]  # 社員の年齢リスト (0 <= ages[i] <= 120)
 
 
 def count_age_statistics(param: Param) -> tuple[int, int, float, int]:
@@ -33,14 +33,14 @@ def count_age_statistics(param: Param) -> tuple[int, int, float, int]:
     ...
 ```
 
-## 入力値の条件
+### 入力値の条件
 
 - `ages`:
   - 社員の年齢を表す整数のリスト。
   - 各年齢は `0` 以上 `120` 以下。
   - リストは空ではない。
 
-## 出力フォーマット
+## 出力
 
 - `(max_age, min_age, avg_age, count_below_avg)` の形式でタプルを返す。
   - `max_age`: 最大年齢 (int)
@@ -48,9 +48,7 @@ def count_age_statistics(param: Param) -> tuple[int, int, float, int]:
   - `avg_age`: 平均年齢 (float, 小数第2位まで丸める)
   - `count_below_avg`: 平均年齢以下の社員の人数 (int)
 
-## サンプル
-
-### サンプル1
+## サンプル1
 
 ```python
 import src.age_statistics as t
@@ -62,7 +60,7 @@ def test_basic():
     assert t.count_age_statistics(param) == (50, 25, 37.5, 3)
 ```
 
-### サンプル1解説
+**解説**
 
 - 最大年齢: `50`
 - 最小年齢: `25`
@@ -71,30 +69,7 @@ def test_basic():
 
 出力: `(50, 25, 37.5, 3)`
 
----
-
-### サンプル2
-
-```python
-def test_single_age():
-    param = t.Param(
-        ages=[28]
-    )
-    assert t.count_age_statistics(param) == (28, 28, 28.0, 1)
-```
-
-### サンプル2解説
-
-- 最大年齢: `28`
-- 最小年齢: `28`
-- 平均年齢: `28.0`
-- 平均年齢以下の人数: `1`
-
-出力: `(28, 28, 28.0, 1)`
-
----
-
-### サンプル3
+## サンプル2
 
 ```python
 def test_varied_ages():
@@ -104,7 +79,7 @@ def test_varied_ages():
     assert t.count_age_statistics(param) == (60, 18, 33.33, 5)
 ```
 
-### サンプル3解説
+**解説**
 
 - 最大年齢: `60`
 - 最小年齢: `18`

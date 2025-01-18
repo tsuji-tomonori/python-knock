@@ -1,6 +1,6 @@
 # 問題(05A): 商品ごとの売上集計
 
-## 問題
+## 問題文
 
 ある店舗での売上データが記録されています。各売上データは、どの商品がいくつ売れたのかを表しています。
 異なる店舗や異なる支払い方法によって、商品の売上を集計したいと考えています。
@@ -14,13 +14,10 @@
 
 売上データのリストを受け取り、各 **(店舗名, 支払い方法, 商品名)** ごとの売上数量を集計し、辞書で返す関数を実装してください。
 
-## 入力フォーマット
-
-以下の `count_sales` 関数を実装してください。
+## 入力
 
 ```python
 from typing import NamedTuple
-from collections import defaultdict
 
 class Sale(NamedTuple):
     store: str  # 店舗名
@@ -41,7 +38,7 @@ def count_sales(sales: list[Sale]) -> dict[tuple[str, str, str], int]:
     ...
 ```
 
-## 入力値の条件
+### 入力値の条件
 
 - `sales` は `Sale` のリストであり、各要素は以下の形式を持ちます。
   - `store` (str): 任意の文字列
@@ -49,14 +46,12 @@ def count_sales(sales: list[Sale]) -> dict[tuple[str, str, str], int]:
   - `product` (str): 任意の文字列
   - `quantity` (int): `1 以上` の整数
 
-## 出力フォーマット
+## 出力
 
 - **辞書 (dict[tuple[str, str, str], int])**:
   `(店舗名, 支払い方法, 商品名)` のタプルをキーとし、売上数量の合計を値とする辞書を返してください。
 
-## サンプル
-
-### サンプル1
+## サンプル1
 
 ```python
 def test_basic():
@@ -79,7 +74,7 @@ def test_basic():
     }
 ```
 
-#### サンプル1解説
+**解説**
 
 - **`("Tokyo", "Credit", "Apple")`**:
   - 3 + 1 + 2 = **6**
@@ -92,7 +87,7 @@ def test_basic():
 - **`("Tokyo", "Cash", "Banana")`**:
   - 2 = **2**
 
-### サンプル2: 空の入力
+## サンプル2
 
 ```python
 def test_empty():
@@ -100,11 +95,11 @@ def test_empty():
     assert count_sales(sales) == {}
 ```
 
-#### サンプル2解説
+**解説**
 
 - 入力が空リストの場合、辞書も空である `{}` を返します。
 
-### サンプル3: 異なる支払い方法
+## サンプル3
 
 ```python
 def test_multiple_payment_methods():
@@ -122,7 +117,7 @@ def test_multiple_payment_methods():
     }
 ```
 
-#### サンプル3解説
+**解説**
 
 - **`("Tokyo", "Credit", "Apple")`**:
   - 4 + 3 = **7**

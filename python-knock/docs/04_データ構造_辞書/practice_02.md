@@ -1,18 +1,14 @@
 # 問題(04B): LRUキャッシュの実装
 
-## 問題
+## 問題文
 
 LRU（Least Recently Used）キャッシュは、使用頻度の低いデータを削除しながら、一定のサイズ内でデータを保持するデータ構造です。
 
 この問題では、LRU キャッシュを実装してください。
 
-## 要件
-
-以下の `LRUCache` クラスを実装してください。
+## 入力
 
 ```python
-from collections import OrderedDict
-
 class LRUCache:
     def __init__(self, capacity: int):
         """
@@ -59,7 +55,7 @@ class LRUCache:
   - キーがすでに存在する場合は、値を更新し、そのキーを最近使用されたものとして更新する。
   - 新しいキーを追加し、容量を超える場合は、最も長い間使われていないキーを削除する。
 
-## 入出力例
+## サンプル1
 
 ```python
 import pytest
