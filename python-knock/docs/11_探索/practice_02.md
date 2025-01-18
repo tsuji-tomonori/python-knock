@@ -4,21 +4,15 @@
 
 ソート済みの整数配列 `arr` が与えられたとき、指定された範囲 `[l, r]` に含まれる要素の個数を求める関数 `count_in_range` を実装してください。
 
-この問題では、**探索アルゴリズム** を用いて効率的に要素の個数を求めることが求められます。
-
 ## 入力
 
-以下の `count_in_range` 関数を実装してください。
-
 ```python
-from typing import List
-
-def count_in_range(arr: List[int], l: int, r: int) -> int:
+def count_in_range(arr: list[int], l: int, r: int) -> int:
     """
     ソート済みの配列から指定範囲 [l, r] に含まれる要素の個数を求める関数。
 
     Args:
-        arr (List[int]): ソート済みの整数配列（昇順）。
+        arr (list[int]): ソート済みの整数配列（昇順）。
         l (int): 範囲の下限。
         r (int): 範囲の上限。
 
@@ -39,25 +33,23 @@ def count_in_range(arr: List[int], l: int, r: int) -> int:
 
 - `int` 型で、`arr` 内の要素のうち `[l, r]` の範囲に含まれる個数を返してください。
 
----
 
-## サンプル
-
-### サンプル1: 基本ケース
+## サンプル1
 
 ```python
-import pytest
-from your_module import count_in_range  # your_module を適切なモジュール名に変更してください
-
 def test_basic_case():
     arr = [1, 3, 5, 7, 9, 11]
     l, r = 4, 8
     assert count_in_range(arr, l, r) == 2  # 5, 7 の2つ
 ```
 
----
+**解説**
+- `arr = [1, 3, 5, 7, 9, 11]` のソート済み配列が与えられています
+- 範囲 `[4, 8]` の中に含まれる要素を探します
+- 配列内で `4 ≤ x ≤ 8` に該当するのは `5` と `7` の **2個** です
+- よって、関数は `2` を返すべきです
 
-### サンプル2: 負の値を含むケース
+## サンプル2
 
 ```python
 def test_negative_numbers():
@@ -66,9 +58,13 @@ def test_negative_numbers():
     assert count_in_range(arr, l, r) == 3  # -1, 2, 4 の3つ
 ```
 
----
+**解説**
+- `arr = [-5, -3, -1, 2, 4, 6, 8, 10]` というソート済み配列が与えられます
+- 範囲 `[-2, 5]` の中に含まれる要素を探します
+- 配列内で `-2 ≤ x ≤ 5` に該当するのは `-1, 2, 4` の **3個** です
+- よって、関数は `3` を返すべきです
 
-### サンプル3: 範囲外のケース
+## サンプル3
 
 ```python
 def test_out_of_range():
@@ -77,9 +73,13 @@ def test_out_of_range():
     assert count_in_range(arr, l, r) == 0  # 範囲に該当なし
 ```
 
----
+**解説**
+- `arr = [1, 2, 3, 4, 5]` というソート済み配列が与えられます
+- 範囲 `[6, 10]` の中に含まれる要素を探します
+- しかし、配列内の最大値 `5` は範囲 `6 ≤ x ≤ 10` に該当しません
+- つまり、該当する要素が **0個** なので、関数は `0` を返すべきです
 
-### サンプル4: 部分範囲のケース
+## サンプル4
 
 ```python
 def test_partial_range():
@@ -88,35 +88,8 @@ def test_partial_range():
     assert count_in_range(arr, l, r) == 3  # 20, 30, 40 の3つ
 ```
 
----
-
-### サンプル5: すべての要素が範囲内のケース
-
-```python
-def test_all_elements_in_range():
-    arr = [1, 2, 3, 4, 5]
-    l, r = -10, 10
-    assert count_in_range(arr, l, r) == 5  # 全範囲を含む
-```
-
----
-
-### サンプル6: 1つの要素のみのケース
-
-```python
-def test_single_element():
-    arr = [1]
-    l, r = 1, 1
-    assert count_in_range(arr, l, r) == 1  # 1つの要素のみ
-```
-
----
-
-### サンプル7: 範囲に含まれない1要素のケース
-
-```python
-def test_single_element_outside_range():
-    arr = [1]
-    l, r = 0, 0
-    assert count_in_range(arr, l, r) == 0  # 範囲外
-```
+**解説**
+- `arr = [10, 20, 30, 40, 50]` というソート済み配列が与えられます
+- 範囲 `[15, 45]` の中に含まれる要素を探します
+- 配列内で `15 ≤ x ≤ 45` に該当するのは `20, 30, 40` の **3個** です
+- よって、関数は `3` を返すべきです
