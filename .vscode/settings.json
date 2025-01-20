@@ -99,6 +99,7 @@
         "editor.defaultFormatter": "charliermarsh.ruff",
     },
     "conventionalCommits.scopes": [
-        "01A"
+        "01A",
+        "02A"
     ]
 }
