@@ -1,0 +1,16 @@
+[tool.ruff]
+target-version = "py312"
+
+# ライン長 (PEP 8標準は79、Blackの標準は88など)
+line-length = 88
+
+# Lint/フォーマット時に除外するパスやファイルがあれば設定
+exclude = [
+    ".venv",
+    "build",
+    "dist",
+]
+
+# isortの設定を Ruff に委託（import文のソート）
+[tool.ruff.isort]
+known-first-party = ["python-knock"]

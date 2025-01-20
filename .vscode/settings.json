@@ -86,5 +86,16 @@
     "git-graph.date.format": "ISO Date & Time", // 日付フォーマットを日本形式に変更
     "git-graph.graph.style": "rounded", // ラウンドスタイルのグラフ表示
     "git-graph.repository.commits.showSignatureStatus": true, // コミット署名ステータスを表示
-    "git-graph.maxDepthOfRepoSearch": 3, // リポジトリ検索の深さを制限
+    "git-graph.maxDepthOfRepoSearch": 3,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true, // リポジトリ検索の深さを制限
+    // すべての保存時に自動でフォーマットを走らせる場合
+    "editor.formatOnSave": true,
+    // Python ファイルに限ってフォーマットを Ruff にする場合
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+    }
 }
