@@ -45,34 +45,25 @@ def simulate_langtons_ant(steps: int) -> list[tuple[int, int]]:
 
 ## サンプル1
 ```python
-simulate_langtons_ant(steps=0)
+assert simulate_langtons_ant(0) == []
 ```
-**出力**
-```python
-[]
-```
+
 **解説**
 - まだ移動していないため、黒いマスは存在しない。
 
 ## サンプル2
 ```python
-simulate_langtons_ant(steps=1)
+assert simulate_langtons_ant(1) == [(0, 0)]
 ```
-**出力**
-```python
-[(0, 0)]
-```
+
 **解説**
 - 初期位置 `(0, 0)` が白なので、黒に変更 → 右を向いて `(1, 0)` に移動。
 
 ## サンプル3
 ```python
-simulate_langtons_ant(steps=5)
+assert simulate_langtons_ant(5) == [(0, -1), (1, -1), (1, 0)]
 ```
-**出力**
-```python
-[(-1, 0), (0, 0), (0, 1)]
-```
+
 **解説**
 1. `(0, 0)`: 白 → 黒, **右向き** → `(1, 0)` に移動
 2. `(1, 0)`: 白 → 黒, **下向き** → `(1, -1)` に移動
@@ -80,15 +71,4 @@ simulate_langtons_ant(steps=5)
 4. `(0, -1)`: 白 → 黒, **上向き** → `(0, 0)` に移動
 5. `(0, 0)`: 黒 → 白, **左向き** → `(-1, 0)` に移動
 
-黒いマスは `(-1, 0), (0, 0), (0, 1)` の3つ。
-
-## サンプル4
-```python
-simulate_langtons_ant(steps=10)
-```
-**出力**
-```python
-[(-2, 0), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1)]
-```
-**解説**
-- 10ステップ後に黒いマスの座標を昇順 `(x, y)` でソートして返す。
+黒いマスは `(1, 0), (1, -1), (0, -1)` の3つ。
