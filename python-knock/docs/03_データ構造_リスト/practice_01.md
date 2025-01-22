@@ -77,20 +77,17 @@ def count_connections(param: Param) -> list[int]:
 ## サンプル1
 
 ```python
-import src.itp2_1e as t
-
-def test_basic():
-    param = t.Param(
-        end_time=5,
-        period=1,
-        logs=[
-            t.Log(0, 3, 0),  # 時刻 0 に 3 台の端末が接続
-            t.Log(1, 2, 0),  # 時刻 1 に 2 台の端末が接続
-            t.Log(4, 5, 2),  # 時刻 4 に 5 台接続、2 台切断
-            t.Log(5, 3, 5),  # 時刻 5 に 3 台接続、5 台切断
-        ]
-    )
-    assert t.count_connections(param) == [3, 5, 5, 5, 8, 6]
+param = Param(
+    end_time=5,
+    period=1,
+    logs=[
+        Log(0, 3, 0),
+        Log(1, 2, 0),
+        Log(4, 5, 2),
+        Log(5, 3, 5),
+    ],
+)
+assert count_connections(param) == [3, 5, 5, 5, 8, 6]
 ```
 
 **解説**
@@ -108,44 +105,33 @@ def test_basic():
 ## サンプル2
 
 ```python
-import src.itp2_1e as t
-
-def test_with_no_logs():
-    param = t.Param(
-        end_time=3,
-        period=1,
-        logs=[]  # ログがない場合
-    )
-    assert t.count_connections(param) == [0, 0, 0, 0]
+param = Param(end_time=3, period=1, logs=[])
+assert count_connections(param) == [0, 0, 0, 0]
 ```
 
 **解説**
 
-- **test\_with\_no\_logs**: ログが全くない場合は、すべての時刻における接続数は 0 となります。そのため、[0, 0, 0, 0] を返します。
+ログが全くない場合は、すべての時刻における接続数は 0 となります。そのため、[0, 0, 0, 0] を返します。
 
 ## サンプル3
 
 ```python
-import src.itp2_1e as t
-
-def test_with_gap_logs():
-    param = t.Param(
-        end_time=6,
-        period=2,
-        logs=[
-            t.Log(1, 4, 0),  # 時刻 1 に 4 台の端末が接続
-            t.Log(3, 1, 1),  # 時刻 3 に 1 台接続、1 台切断
-            t.Log(6, 3, 2),  # 時刻 6 に 3 台接続、2 台切断
-        ]
-    )
-    assert t.count_connections(param) == [0, 4, 4, 5]
+param = Param(
+    end_time=6,
+    period=2,
+    logs=[
+    Log(1, 4, 0),
+    Log(3, 1, 1),
+    Log(6, 3, 2),
+    ],
+)
+assert count_connections(param) == [0, 4, 4, 5]
 ```
 
 **解説**
 
-- **test\_with\_gap\_logs**:
-  - **時刻 0, 2, 4, 5**: ログがないため、直前の接続数を引き継ぎます。
-  - **時刻 1**: 4 台接続 → 合計接続数 4
-  - **時刻 3**: 1 台接続、1 台切断 → 合計接続数 4
-  - **時刻 6**: 3 台接続、2 台切断 → 合計接続数 5
-  - 集計間隔 period=2 のため、時刻 0、2、4、6 における接続数を出力し、[0, 4, 4, 5] を返します。
+- **時刻 0, 2, 4, 5**: ログがないため、直前の接続数を引き継ぎます。
+- **時刻 1**: 4 台接続 → 合計接続数 4
+- **時刻 3**: 1 台接続、1 台切断 → 合計接続数 4
+- **時刻 6**: 3 台接続、2 台切断 → 合計接続数 5
+- 集計間隔 period=2 のため、時刻 0、2、4、6 における接続数を出力し、[0, 4, 4, 5] を返します。
