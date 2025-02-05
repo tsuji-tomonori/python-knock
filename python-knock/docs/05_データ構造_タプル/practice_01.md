@@ -25,6 +25,7 @@ class Sale(NamedTuple):
     product: str  # 商品名
     quantity: int  # 売上数量（1以上の整数）
 
+
 def count_sales(sales: list[Sale]) -> dict[tuple[str, str, str], int]:
     """
     各 (店舗名, 支払い方法, 商品名) ごとの売上数量を集計する関数.
