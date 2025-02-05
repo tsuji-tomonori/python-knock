@@ -101,6 +101,7 @@
     "conventionalCommits.scopes": [
         "01A",
         "02A",
-        "03A"
+        "03A",
+        "04A"
     ]
 }
