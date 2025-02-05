@@ -1,4 +1,4 @@
-from sample.count_word_frequencies import count_word_frequencies
+from src.count_word_frequencies import count_word_frequencies
 
 
 def test_basic():
