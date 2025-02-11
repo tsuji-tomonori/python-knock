@@ -163,3 +163,32 @@ def test_boundary_extreme_values():
     # スコープを抜けると元の値に戻る
     assert sm.get_variable("min") == min_val
     assert sm.get_variable("max") == max_val
+
+
+# スコープに入ったり出たりするテスト
+def test_reenter_scope_preserves_global_variables():
+    # グローバルスコープで変数 "x" を 10 に設定
+    sm = ScopeManager()
+    sm.set_variable("x", 10)
+    assert sm.get_variable("x") == 10
+
+    # 内側のスコープに入り "x" を 20 に上書きする
+    sm.enter_scope()
+    sm.set_variable("x", 20)
+    assert sm.get_variable("x") == 20
+
+    # 内側のスコープから出ると、グローバルスコープの "x" の値 (10) が復元されるはず
+    sm.exit_scope()
+    assert sm.get_variable("x") == 10
+
+    # 再度内側のスコープに入った場合も、グローバルスコープの "x" が参照できる
+    sm.enter_scope()
+    # この時点では、内側のスコープで上書きされる前のグローバル値 10 が参照される
+    assert sm.get_variable("x") == 10
+
+    # 内側で "x" を 30 に上書きし、その後再度スコープを抜けるテスト
+    sm.set_variable("x", 30)
+    assert sm.get_variable("x") == 30
+    sm.exit_scope()
+    # スコープを抜けたので、再びグローバルの "x" (10) が参照される
+    assert sm.get_variable("x") == 10
