@@ -1,96 +1,82 @@
-# 問題(08A): 列の幅を揃える
+# 問題(08A): 簡易マークダウンパーサー
 
 ## 問題文
 
-テキストデータの各行には `$` (ドル記号) によって区切られたフィールドが含まれています。
-このフィールドを各列ごとに整列し、適切な間隔を保ちながら出力してください。
+マークダウン形式のテキストを受け取り、対応するHTML形式の文字列に変換する簡易なマークダウンパーサーを実装してください。
+サポートするマークダウン記法は以下の通りです:
 
-また、各列の単語を **左寄せ (left justified)**、**右寄せ (right justified)**、**中央寄せ (center justified)** のいずれかで整列できるようにしてください。
+- **見出し**: 各行の先頭にある `#` の数に応じ、`<h1>` から `<h6>` タグで囲んで変換する
+  （例: `# 見出し1` → `<h1>見出し1</h1>`）
+- **強調**: テキストを `**` で囲んだ部分を `<strong>` タグで囲む
+  （例: `**強調**` → `<strong>強調</strong>`）
+- **イタリック**: テキストを `*` で囲んだ部分を `<em>` タグで囲む
+  （例: `*イタリック*` → `<em>イタリック</em>`）
+- **コード**: テキストを `` ` `` で囲んだ部分を `<code>` タグで囲む (コード内は変換を行わない)
+  （例: `` `コード` `` → `<code>コード</code>`）
+- **段落**: 空行で区切られたテキストブロックは `<p>` タグで囲む
+
+ただし、ネストされた記法やテーブル、リスト、リンクなどの複雑なマークダウン記法は対象外とし、シンプルな変換のみ行うものとします。
 
 ## 入力
 
 ```python
-from typing import Literal
-
-def align_columns(text: list[str], alignment: Literal["left", "right", "center"]) -> list[str]:
+def markdown_to_html(md: str) -> str:
     """
-    各行のフィールドを `$` で区切り、列ごとに整列した文字列を返す。
+    マークダウン形式の文字列をHTML形式の文字列に変換する。
+
+    サポートする記法:
+      - 見出し: 行頭の '#' の個数に応じた <h1>〜<h6> タグで囲む
+      - 強調: **で囲まれた部分を <strong> タグで囲む
+      - イタリック: *で囲まれた部分を <em> タグで囲む
+      - コード: `で囲まれた部分を <code> タグで囲む
+      - 段落: 空行で区切られたブロックを <p> タグで囲む
 
     Args:
-        text (list[str]): `$` 区切りの文字列リスト
-        alignment (Literal["left", "right", "center"]): 整列方法 ("left", "right", "center")
+        md (str): マークダウン形式の文字列
 
     Returns:
-        list[str]: 整列後の文字列リスト
+        str: HTML形式の文字列
     """
     ...
 ```
 
 ### 入力の条件
 
-- `text` は `1` 以上 `100` 以下の要素を持つリストで、それぞれの要素は `1` 以上 `200` 以下の長さを持つ文字列。
-- 各文字列は `$` をフィールドの区切りとして含む（ただし、末尾に `$` が含まれることもある）。
-- `alignment` は `"left"`、`"right"`、または `"center"` のいずれか。
+- `md` は 1 文字以上 10000 文字以下の文字列とする。
+- 複数行に渡るマークダウンテキストが入力される。
+- 各要素（見出し、強調、イタリック、コード、段落）は正しいマークダウン記法で記述される。
+- 空行は `\n` により区切られる。
 
 ## 出力
 
-- 各列の単語を `alignment` に従って整列する。
-- 列ごとの最小の間隔を 1 スペースとして、適切に整列させる。
-- 末尾の不要なスペースは除く。
+- 指定されたマークダウン記法に基づき、対応するHTMLタグで囲んだ文字列を返すこと。
+- 各HTMLタグは適切に閉じられ、不要なスペースや改行は含まないこと。
 
 ## サンプル1
 
 ```python
-text = [
-    "Given$a$text$file$of$many$lines,",
-    "are$delineated$by$a$single$'dollar'$character,",
-    "Further,$allow$for$each$word$in$a$column$to$be$either"
-]
-alignment = "left"
-print("\n".join(align_columns(text, alignment)))
+md = """# 見出し1
+
+これは *イタリック* と **強調** を含む段落です。
+
+## 見出し2
+
+`コード` を含む別の段落。"""
+
+html = """<h1>見出し1</h1>
+<p>これは <em>イタリック</em> と <strong>強調</strong> を含む段落です。</p>
+<h2>見出し2</h2>
+<p><code>コード</code> を含む別の段落。</p>"""
+
+assert markdown_to_html(md) == html
 ```
 
-#### 出力
-```
-Given      a        text     file  of      many  lines,
-are        delineated by     a     single 'dollar' character,
-Further,   allow    for      each  word   in     a       column to be either
-```
+**解説**
 
-## サンプル2
-
-```python
-text = [
-    "Given$a$text$file$of$many$lines,",
-    "are$delineated$by$a$single$'dollar'$character,",
-    "Further,$allow$for$each$word$in$a$column$to$be$either"
-]
-alignment = "right"
-print("\n".join(align_columns(text, alignment)))
+以下が出力される
 ```
-
-#### 出力
-```
-   Given         a  text  file   of  many   lines,
-     are delineated    by     a single 'dollar' character,
-Further,    allow    for  each  word    in     a column to be either
-```
-
-## サンプル3
-
-```python
-text = [
-    "Given$a$text$file$of$many$lines,",
-    "are$delineated$by$a$single$'dollar'$character,",
-    "Further,$allow$for$each$word$in$a$column$to$be$either"
-]
-alignment = "center"
-print("\n".join(align_columns(text, alignment)))
-```
-
-#### 出力
-```
-  Given      a      text   file   of    many   lines,
-   are    delineated   by    a   single 'dollar' character,
-Further,    allow    for   each  word    in     a   column to be either
+<h1>見出し1</h1>
+<p>これは <em>イタリック</em> と <strong>強調</strong> を含む段落です。</p>
+<h2>見出し2</h2>
+<p><code>コード</code> を含む別の段落。</p>
 ```
