@@ -13,17 +13,15 @@
 ## 入力
 
 ```python
-from typing import List, Tuple
-
-def remove_duplicate_customers(customer_ids: List[int]) -> Tuple[int, ...]:
+def remove_duplicate_customers(customer_ids: list[int]) -> tuple[int, ...]:
     """
-    問い合わせ履歴から重複した顧客IDを除去し、最初に出現した順序を保持したままタプルとして返す関数。
+    問い合わせ履歴から重複した顧客IDを除去し、最初に出現した順序を保持したタプルとして返す関数。
 
     Args:
-        customer_ids (List[int]): 顧客IDのリスト
+        customer_ids (list[int]): 顧客IDのリスト
 
     Returns:
-        Tuple[int, ...]: 重複を除いた顧客IDのタプル
+        tuple[int, ...]: 重複を除いた顧客IDのタプル
     """
     ...
 ```
