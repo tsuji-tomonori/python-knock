@@ -11,9 +11,7 @@
 ## 入力
 
 ```python
-from typing import List, Tuple
-
-def run_length_encoding(s: str) -> List[Tuple[str, int]]:
+def run_length_encoding(s: str) -> list[tuple[str, int]]:
     """
     文字列をランレングス符号化する関数
 
@@ -21,7 +19,7 @@ def run_length_encoding(s: str) -> List[Tuple[str, int]]:
         s (str): 符号化する文字列（1文字以上）
 
     Returns:
-        List[Tuple[str, int]]: ランレングス符号化されたリスト
+        list[tuple[str, int]]: ランレングス符号化されたリスト
     """
     ...
 ```
