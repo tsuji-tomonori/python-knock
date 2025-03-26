@@ -12,8 +12,6 @@ AWS CLI (Command Line Interface) では、さまざまな AWS サービスに対
 - `lambda`
 - `dynamodb`
 - `rds`
-- `sns`
-- `sqs`
 - `cloudfront`
 - `iam`
 - `route53`
