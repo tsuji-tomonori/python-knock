@@ -9,14 +9,12 @@
 ## 入力
 
 ```python
-from typing import List
-
-def find_closest_value(arr: List[int], target: int) -> int:
+def find_closest_value(arr: list[int], target: int) -> int:
     """
     ソート済みの整数配列から、指定された値に最も近い値を返す。
 
     Args:
-        arr (List[int]): ソートされた整数のリスト (要素数は 1 以上)
+        arr (list[int]): ソートされた整数のリスト (要素数は 1 以上)
         target (int): 探索値
 
     Returns:
